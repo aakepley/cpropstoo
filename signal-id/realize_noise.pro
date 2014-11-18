@@ -1,3 +1,4 @@
+
 function realize_noise $
    , noise $
    , template = template $
@@ -73,13 +74,13 @@ function realize_noise $
 
 if sz[0] eq 3 then begin ; cube case
    for i = 0, n_elements(sz[3]) - 1 do begin
-      want_noise = stddev(noise[*,*,i],/double,/nan)
+      want_noise = median(noise[*,*,i],/double)
       have_noise = stddev(this_noise[*,*,i],/double,/nan)
       rescale_value = want_noise/have_noise
       this_noise[*,*,i] = rescale_value * this_noise[*,*,i]
    endfor
 endif else begin ; image case
-   want_noise = stddev(noise,/double,/nan)
+   want_noise = median(noise,/double,/nan)
    have_noise = stddev(this_noise,/double,/nan)
    rescale_value = want_noise/have_noise
    this_noise = rescale_value * this_noise

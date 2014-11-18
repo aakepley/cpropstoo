@@ -254,7 +254,8 @@ pro find_local_max $
 ; user-tunable quantities: delta, minval, minpix, minarea, minvchan.
 
   if keyword_set(nodecimate) eq 0 then begin
-     sigma = mad(data,/finite) ; estimate here, since RMS of masked cube may be different
+; AAK removing following line for II Zw 40.
+;     sigma = mad(data,/finite) ; estimate here, since RMS of masked cube may be different
 ;    print,"Calling decimate_kernels with sigma value: ", sigma
      sub_kernels = $
         decimate_kernels(sub_kernels $

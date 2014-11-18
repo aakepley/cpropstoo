@@ -121,7 +121,9 @@ pro mc_calc_errors $
     
      props_err[i].radrms_extrap_deconv_err = stddev(props_sim[i,*].radrms_extrap_deconv,/double,/nan)
      props_err[i].radrms_gcorr_deconv_err = stddev(props_sim[i,*].radrms_gcorr_deconv,/double,/nan)
-
+     props_err[i].radarea_deconv_err = stddev(props_sim[i,*].radarea_deconv,/double,/nan)
+      props_err[i].radell_deconv_err = stddev(props_sim[i,*].radell_deconv,/double,/nan)
+    
      props_err[i].virmass_extrap_deconv_err = stddev(props_sim[i,*].virmass_extrap_deconv,/double,/nan)
      props_err[i].virmass_gcorr_deconv_err = stddev(props_sim[i,*].virmass_gcorr_deconv,/double,/nan)
 
@@ -142,6 +144,10 @@ pro mc_calc_errors $
      props_err[i].yrms_extrap_deconv_err =  stddev(props_sim[i,*].yrms_extrap_deconv,/double,/nan)
      props_err[i].yrms_gcorr_err =  stddev(props_sim[i,*].yrms_gcorr,/double,/nan)
      props_err[i].yrms_gcorr_deconv_err =  stddev(props_sim[i,*].yrms_gcorr_deconv,/double,/nan)
+
+     props_err[i].r32_err = stddev(props_sim[i,*].r32,/double,/nan)
+     props_err[i].r31_err = stddev(props_sim[i,*].r31,/double,/nan)
+     
 endfor
 
 ; write out the error structure

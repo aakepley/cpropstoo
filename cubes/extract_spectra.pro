@@ -3,10 +3,12 @@ pro extract_spectra $
    , infile=infile $
    , assign=assign $
    , inassign=inassign $
+   , props = props $
    , inprops=inprops $
    , hdr=hdr $
    , doaverage = doaverage $
-   , idl_file=idl_file 
+   , idl_file=idl_file $
+   , out_props = out_props 
 
 ;+
 ; Purpose: extract spectra from regions in an assignment cube
@@ -62,12 +64,14 @@ pro extract_spectra $
   endif
 
 ; read in old props
-  if n_elements(inprops) eq 0 then begin
+  if n_elements(inprops) eq 0 and n_elements(props) eq 0 then begin
      message,/info,"need input props structure (inprops=)"
      return
-  endif else begin
+  endif 
+
+  if n_elements(inprops) gt 0 then begin
      restore,inprops,/verb
-  endelse
+  endif
 
 ; average spectra or total spectra
   if n_elements(doaverage) eq 0 then doaverage = 0
@@ -107,7 +111,12 @@ pro extract_spectra $
   endfor
 
   ; write out the spectra structure
-  props = props_spectra 
-  save, /verb, props, filename=idl_file
+
+  if n_elements(idl_file) gt 0 then begin
+     props = props_spectra 
+     save, /verb, props, filename=idl_file
+  endif
+
+  out_props = props_spectra
 
 end

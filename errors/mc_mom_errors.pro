@@ -102,11 +102,19 @@ pro mc_mom_errors $
         , dist = dist $  
         , /verbose
 
+     extract_spectra $
+        , data = out_cube $
+        , assign = assign $
+        , hdr = hdr $
+        , props = props $
+        , /doaverage $
+        , out_props = props_spectra
+
      ; add simulation to array of props structures
      if i eq 0 then begin
-        props_sim = props
+        props_sim = props_spectra
      endif else begin
-        props_sim = [[props_sim],[props]]
+        props_sim = [[props_sim],[props_spectra]]
      endelse
       
   endfor

@@ -62,6 +62,8 @@ function add_error_fields $
 ; radius errors 
   empty_struct = create_struct(empty_struct, "radrms_extrap_deconv_err", nan)
   empty_struct = create_struct(empty_struct, "radrms_gcorr_deconv_err", nan)
+  empty_struct = create_struct(empty_struct, "radarea_deconv_err", nan)
+  empty_struct = create_struct(empty_struct, "radell_deconv_err", nan)
 
 ; xrms errors
   empty_struct = create_struct(empty_struct, "xrms_err", nan)
@@ -84,6 +86,10 @@ function add_error_fields $
   empty_struct = create_struct(empty_struct, "vrms_gcorr_err", nan)
   empty_struct = create_struct(empty_struct, "vrms_gcorr_deconv_err", nan)
 
+
+; r31 and r32 errors
+  empty_struct = create_struct(empty_struct, "r32_err", nan)
+  empty_struct = create_struct(empty_struct, "r31_err", nan)
 
   return, empty_struct
 
